@@ -7,25 +7,34 @@ from src.pipeline.predict_pipeline import CustomDataPrice, CustomDataCarat, Pred
 ## Dataset
 dataset = pd.read_csv('data/diamonds.csv')
 
+text_header = """:wave: Welcome to **Diamond P&C Prediction**:wave:
+                
+:bar_chart: You can **predict the ideal :blue-background[price] or :blue-background[weight] of the 💎**
+
+Hopefully, you can get the **fine choice for the 💎 that you've ever dream of!**:cloud:
+"""
+
 
 def main():
     st.set_page_config(
-        page_title="Diamond Price Prediction",
-        page_icon="💎"
-        # layout="wide"
+        page_title="Diamond Prediction",
+        page_icon="💎",
+        layout="centered"
     )
     
-    st.title("💎Diamond Price Prediction")
+    st.title("💎Diamond **P&C** Prediction💎")
+    st.markdown(text_header)
     
-    tab1, tab2, tab3 = st.tabs(["🗃 Dataset", "💲 Predict Price", "💎 Predict Carat"])
+    tab1, tab2, tab3 = st.tabs(["🗃 Dataset", "💵 Predict Price", "💎 Predict Carat"])
     
     with tab1:
         st.subheader('📋Existing Dataset')
         dataset.columns = ['Carat', 'Cut', 'Color', 'Clarity', 'Depth', 'Table', 'Price', 'x', 'y', 'z']
         st.write(dataset)
     
+    # Price
     with tab2:
-        st.header("🔎Do the Prediction")
+        st.subheader("🔎Do the Weight Prediction")
         st.caption("**I guest, you already know what :blue[type and size] of :gem: that you need!**")
         with st.form('Diamond Price', clear_on_submit=True):
             carat = st.number_input("Carat", min_value=0.2, max_value=5.01, format="%.2f")
@@ -76,10 +85,12 @@ def main():
                     result = predict_pipeline.predict_price(predict_df)
                     results = round(result[0], 2)
                     
-                    st.success(f'Your Diamond Price is ${results:.2f}')
+                    st.success(f'Based on your input, My prediction for your 💎 Price is around ${results:.2f}', icon="🔎")
         
+    
+    # Carat    
     with tab3:
-        st.header("🔎Do the Prediction")
+        st.subheader("🔎Do the Price Prediction")
         st.caption("**I guest, you already know what :blue[type and size] of :gem: that you need!**")
         with st.form('Diamond Carat', clear_on_submit=True):
             cut = st.selectbox("Quality",["Fair", "Good", "Very Good", "Premium", "Ideal"], index=None, placeholder='Quality Cut type...')
@@ -131,9 +142,11 @@ def main():
                     results = round(result[0], 3)
                     to_gram = results / 5
                     
-                    st.info('Reminder! 1 carat is equal to 0.2 gram')
-                    st.success(f'You got Diamond for {results:.2f} carat or {to_gram:.2f} gram')
+                    st.info('📝 1 carat = 0.2 gr')
+                    st.success(f'Based on your input, My prediction you will get 💎 for {results:.2f} carat or {to_gram:.2f} gram', icon="🔎")
         
 
 if __name__ == '__main__': 
     main() 
+    
+    
