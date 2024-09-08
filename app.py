@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 from src.pipeline.predict_pipeline import CustomDataPrice, CustomDataCarat, PredictPipeline
+from src.analysis import cut_distribution, color_distribution, clarity_distribution, show_clarity, average_price, price_distribution
 
 ## Dataset
 dataset = pd.read_csv('data/diamonds.csv')
@@ -27,20 +28,57 @@ def main():
     
     tab1, tab2, tab3 = st.tabs(["🗃 Dataset", "💵 Predict Price", "💎 Predict Carat"])
     
+    # Main
     with tab1:
         st.subheader('📋Existing Dataset')
         dataset.columns = ['Carat', 'Cut', 'Color', 'Clarity', 'Depth', 'Table', 'Price', 'x', 'y', 'z']
-        st.write(dataset)
+        with st.expander("👀 Show Datasets"):
+            st.write(dataset)
+        
+        st.subheader(':bar_chart: Analysis')
+        with st.expander("👀 Show Information & Analysis"):
+            
+            # only for image
+            left_co, cent_co,last_co = st.columns(spec=[0.15, 0.7, 0.15])
+            with cent_co:
+                st.image("image/diamond_anatomy.png", caption="Anatomy of Diamond")
+            
+
+            clarity_con = st.container()
+            clarity_con.markdown('<span style="font-size: 18px;">**CLARITY OF DIAMONDS 💎**</span>', unsafe_allow_html=True)
+            clarity = clarity_con.select_slider(
+                    'Clarity',
+                    options=['IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2', 'I1']
+                )
+
+            show_clarity(clarity, clarity_con)
+            st.divider()
+            
+            ## Analysis
+            st.markdown('<span style="font-size: 24px;">**DISTRIBUTION of DIAMONDS 💎**</span>', unsafe_allow_html=True)
+            st.markdown('**Cut, Price, and Clarity** (_from **👍 to 👎**_)')
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                cut_distribution()
+            with col2:
+                color_distribution()
+            with col3:
+                clarity_distribution()
+                
+            average_price()
+            
+            price_distribution()
+             
     
     # Price
     with tab2:
-        st.subheader("🔎Do the Weight Prediction")
+        st.subheader("🔎Do the Price Prediction")
         st.caption("**I guest, you already know what :blue[type and size] of :gem: that you need!**")
         with st.form('Diamond Price', clear_on_submit=True):
             carat = st.number_input("Carat", min_value=0.2, max_value=5.01, format="%.2f")
-            cut = st.selectbox("Quality",["Fair", "Good", "Very Good", "Premium", "Ideal"], index=None, placeholder='Quality Cut type...')
-            color = st.selectbox("Color", ["J", "I", "H", "G", "F", "E", "D"], index=None, placeholder='Color of Diamond...')
-            clarity = st.selectbox("Cleaness", ["I1", "SI2", "SI1", "VS2", "VS1", "VVS2", "VVS1", "IF"], index=None, placeholder='Cleaness type...')
+            cut = st.selectbox("Quality (👍 to 👎)",['Ideal', 'Premium', 'Very Good', 'Good', 'Fair'], index=None, placeholder='Quality Cut type...')
+            color = st.selectbox("Color (👍 to 👎)", ['D', 'E', 'F', 'G', 'H', 'I', 'J'], index=None, placeholder='Color of Diamond...')
+            clarity = st.selectbox("Cleaness (👍 to 👎)", ['IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2', 'I1'], index=None, placeholder='Cleaness type...')
             
             col_d, col_t = st.columns(2)
             with col_d:
@@ -50,11 +88,11 @@ def main():
             
             col_x, col_y, col_z = st.columns(3)
             with col_x:
-                x = st.number_input("X", min_value=0.1, max_value=10.74, format="%.2f")
+                x = st.number_input("X (mm)", min_value=0.1, max_value=10.74, format="%.2f")
             with col_y:
-                y = st.number_input("Y", min_value=0.1, max_value=58.9, format="%.2f")
+                y = st.number_input("Y (mm)", min_value=0.1, max_value=58.9, format="%.2f")
             with col_z:
-                z = st.number_input("Z", min_value=0.1, max_value=31.8, format="%.2f")
+                z = st.number_input("Z (mm)", min_value=0.1, max_value=31.8, format="%.2f")
             submitted = st.form_submit_button('Predict')
             
             if submitted:
@@ -90,12 +128,12 @@ def main():
     
     # Carat    
     with tab3:
-        st.subheader("🔎Do the Price Prediction")
+        st.subheader("🔎Do the Weight Prediction")
         st.caption("**I guest, you already know what :blue[type and size] of :gem: that you need!**")
         with st.form('Diamond Carat', clear_on_submit=True):
-            cut = st.selectbox("Quality",["Fair", "Good", "Very Good", "Premium", "Ideal"], index=None, placeholder='Quality Cut type...')
-            color = st.selectbox("Color", ["J", "I", "H", "G", "F", "E", "D"], index=None, placeholder='Color of Diamond...')
-            clarity = st.selectbox("Cleaness", ["I1", "SI2", "SI1", "VS2", "VS1", "VVS2", "VVS1", "IF"], index=None, placeholder='Cleaness type...')
+            cut = st.selectbox("Quality (👍 to 👎)",['Ideal', 'Premium', 'Very Good', 'Good', 'Fair'], index=None, placeholder='Quality Cut type...')
+            color = st.selectbox("Color (👍 to 👎)", ['D', 'E', 'F', 'G', 'H', 'I', 'J'], index=None, placeholder='Color of Diamond...')
+            clarity = st.selectbox("Cleaness (👍 to 👎)", ['IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2', 'I1'], index=None, placeholder='Cleaness type...')
             
             col_d, col_t = st.columns(2)
             with col_d:
@@ -106,11 +144,11 @@ def main():
             price = st.number_input("Budget ($)", min_value=0, max_value=18800)
             col_x, col_y, col_z = st.columns(3)
             with col_x:
-                x = st.number_input("X", min_value=0.1, max_value=10.74, format="%.2f")
+                x = st.number_input("X (mm)", min_value=0.1, max_value=10.74, format="%.2f")
             with col_y:
-                y = st.number_input("Y", min_value=0.1, max_value=58.9, format="%.2f")
+                y = st.number_input("Y (mm)", min_value=0.1, max_value=58.9, format="%.2f")
             with col_z:
-                z = st.number_input("Z", min_value=0.1, max_value=31.8, format="%.2f")
+                z = st.number_input("Z (mm)", min_value=0.1, max_value=31.8, format="%.2f")
             submitted = st.form_submit_button('Predict')
             
             if submitted:
