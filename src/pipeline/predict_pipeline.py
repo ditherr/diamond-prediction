@@ -28,7 +28,7 @@ class PredictPipeline:
     # predict carat
     def predict_carat(self, features):
         try:
-            model_path = os.path.join('data', 'final_model_pipeline_carat.pkl')
+            model_path = os.path.join('data', 'final_model_pipeline_carat_xgb.pkl')
             
             model = load_object(model_path)
             

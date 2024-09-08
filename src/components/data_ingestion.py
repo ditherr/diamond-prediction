@@ -11,9 +11,9 @@ from src.components.transform_training import *
 
 @dataclass
 class DataIngestionConfig:
-    raw_data_path: str = os.path.join('artifact', 'data.csv')
-    train_data_path: str = os.path.join('artifact', 'train.csv')
-    test_data_path: str = os.path.join('artifact', 'test.csv')
+    raw_data_path: str = os.path.join('data', 'data.csv')
+    train_data_path: str = os.path.join('data', 'train.csv')
+    test_data_path: str = os.path.join('data', 'test.csv')
     
 
 class DataIngestion:

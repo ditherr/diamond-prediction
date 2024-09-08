@@ -25,7 +25,7 @@ from src.utils import save_object, evaluate_model
 
 @dataclass
 class DataTransformationConfig:
-    final_pipeline = os.path.join('artifact', 'final_model_pipeline.pkl')
+    final_pipeline = os.path.join('data', 'final_model_pipeline.pkl')
     
 
 class ModelDevelopment:
