@@ -10,7 +10,7 @@
 This 💎Diamond Prediction Web-App provide a little information about Diamonds and slice of the Analysis about the distribution of Diamond itself. Also provides two prediction, Price and Weight of Diamond based on users preference.
 
 <p align="center">
-  <img src="image/Product.png" alt="Diamond Prediction", width=620>
+  <a href="https://diamond-prediction.streamlit.app/"><img src="image/Product.png" alt="Diamond Prediction", width=620></a>
 </p>
 
 ### 📜 What does it do?
@@ -19,7 +19,7 @@ This 💎Web-App allows you to predict Price and Weight of Diamonds based on you
 
 ### 🔧 How does it work?
 
-Built with Streamlit and it encapsulates a comprehensive Python environment that includes all necessary libraries. The Web-App only playing with Python and Streamlit function to provide everything inside (visualization, prediction, etc.)
+This is an End-to-End Machine Learning Project that Built with Streamlit and it encapsulates a comprehensive Python environment that includes all necessary libraries. The Web-App only playing with Python and Streamlit function to provide everything inside (visualization, prediction, etc.)
 
 
 
