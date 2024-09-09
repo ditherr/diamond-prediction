@@ -26,7 +26,7 @@ def main():
     st.title("💎Diamond **P&C** Prediction💎")
     st.markdown(text_header)
     
-    tab1, tab2, tab3 = st.tabs(["🗃 Dataset", "💵 Predict Price", "💎 Predict Carat"])
+    tab1, tab2, tab3 = st.tabs(["**🗃 Dataset**", "**💵 Predict Price**", "**💎 Predict Carat**"])
     
     # Main
     with tab1:
@@ -76,9 +76,9 @@ def main():
         st.caption("**I guest, you already know what :blue[type and size] of :gem: that you need!**")
         with st.form('Diamond Price', clear_on_submit=True):
             carat = st.number_input("Carat", min_value=0.2, max_value=5.01, format="%.2f")
-            cut = st.selectbox("Quality (👍 to 👎)",['Ideal', 'Premium', 'Very Good', 'Good', 'Fair'], index=None, placeholder='Quality Cut type...')
+            cut = st.selectbox("Cut Quality (👍 to 👎)",['Ideal', 'Premium', 'Very Good', 'Good', 'Fair'], index=None, placeholder='Quality Cut type...')
             color = st.selectbox("Color (👍 to 👎)", ['D', 'E', 'F', 'G', 'H', 'I', 'J'], index=None, placeholder='Color of Diamond...')
-            clarity = st.selectbox("Cleaness (👍 to 👎)", ['IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2', 'I1'], index=None, placeholder='Cleaness type...')
+            clarity = st.selectbox("Clarity (👍 to 👎)", ['IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2', 'I1'], index=None, placeholder='Cleaness type...')
             
             col_d, col_t = st.columns(2)
             with col_d:
@@ -97,19 +97,19 @@ def main():
             
             if submitted:
                 if not carat: 
-                    st.warning('Please fill the Gender field !!')
+                    st.warning('Please fill the Carat field !!')
                 elif not cut: 
-                    st.warning('Please fill the Ethnicity field !!')
+                    st.warning('Please fill the Cut field !!')
                 elif not color: 
-                    st.warning('Please fill the Parent Education field !!')
+                    st.warning('Please fill the Color field !!')
                 elif not clarity: 
-                    st.warning('Please fill the Lunch Type field !!')
+                    st.warning('Please fill the Clarity field !!')
                 elif not depth: 
-                    st.warning('Please fill the Test Course field !!')
+                    st.warning('Please fill the Depth field !!')
                 elif not table: 
-                        st.warning('Please fill the roll number field !!')
+                    st.warning('Please fill the Table field !!')
                 elif not x or not y or not z: 
-                        st.warning('Please fill the roll number field !!')
+                    st.warning('Please fill the Measure field !!')
                 else:
                     # Convert data into dataframe
                     data = CustomDataPrice(carat, cut, color, clarity, depth, table, x, y, z)
@@ -131,9 +131,9 @@ def main():
         st.subheader("🔎Do the Weight Prediction")
         st.caption("**I guest, you already know what :blue[type and size] of :gem: that you need!**")
         with st.form('Diamond Carat', clear_on_submit=True):
-            cut = st.selectbox("Quality (👍 to 👎)",['Ideal', 'Premium', 'Very Good', 'Good', 'Fair'], index=None, placeholder='Quality Cut type...')
+            cut = st.selectbox("Cut Quality (👍 to 👎)",['Ideal', 'Premium', 'Very Good', 'Good', 'Fair'], index=None, placeholder='Quality Cut type...')
             color = st.selectbox("Color (👍 to 👎)", ['D', 'E', 'F', 'G', 'H', 'I', 'J'], index=None, placeholder='Color of Diamond...')
-            clarity = st.selectbox("Cleaness (👍 to 👎)", ['IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2', 'I1'], index=None, placeholder='Cleaness type...')
+            clarity = st.selectbox("Clarity (👍 to 👎)", ['IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2', 'I1'], index=None, placeholder='Cleaness type...')
             
             col_d, col_t = st.columns(2)
             with col_d:
@@ -153,19 +153,19 @@ def main():
             
             if submitted:
                 if not price: 
-                    st.warning('Please fill the Gender field !!')
+                    st.warning('Please fill the Price field !!')
                 elif not cut: 
-                    st.warning('Please fill the Ethnicity field !!')
+                    st.warning('Please fill the Cut field !!')
                 elif not color: 
-                    st.warning('Please fill the Parent Education field !!')
+                    st.warning('Please fill the Color field !!')
                 elif not clarity: 
-                    st.warning('Please fill the Lunch Type field !!')
+                    st.warning('Please fill the Clarity field !!')
                 elif not depth: 
-                    st.warning('Please fill the Test Course field !!')
+                    st.warning('Please fill the Depth field !!')
                 elif not table: 
-                        st.warning('Please fill the roll number field !!')
+                        st.warning('Please fill Table field !!')
                 elif not x or not y or not z: 
-                        st.warning('Please fill the roll number field !!')
+                        st.warning('Please fill the Measure field !!')
                 else:
                     # Convert data into dataframe
                     data = CustomDataCarat(cut, color, clarity, depth, table, price, x, y, z)
