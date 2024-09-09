@@ -97,19 +97,19 @@ def main():
             
             if submitted:
                 if not carat: 
-                    st.warning('Please fill the Gender field !!')
+                    st.warning('Please fill the Carat field !!')
                 elif not cut: 
-                    st.warning('Please fill the Ethnicity field !!')
+                    st.warning('Please fill the Cut field !!')
                 elif not color: 
-                    st.warning('Please fill the Parent Education field !!')
+                    st.warning('Please fill the Color field !!')
                 elif not clarity: 
-                    st.warning('Please fill the Lunch Type field !!')
+                    st.warning('Please fill the Clarity field !!')
                 elif not depth: 
-                    st.warning('Please fill the Test Course field !!')
+                    st.warning('Please fill the Depth field !!')
                 elif not table: 
-                        st.warning('Please fill the roll number field !!')
+                    st.warning('Please fill the Table field !!')
                 elif not x or not y or not z: 
-                        st.warning('Please fill the roll number field !!')
+                    st.warning('Please fill the Measure field !!')
                 else:
                     # Convert data into dataframe
                     data = CustomDataPrice(carat, cut, color, clarity, depth, table, x, y, z)
@@ -153,19 +153,19 @@ def main():
             
             if submitted:
                 if not price: 
-                    st.warning('Please fill the Gender field !!')
+                    st.warning('Please fill the Price field !!')
                 elif not cut: 
-                    st.warning('Please fill the Ethnicity field !!')
+                    st.warning('Please fill the Cut field !!')
                 elif not color: 
-                    st.warning('Please fill the Parent Education field !!')
+                    st.warning('Please fill the Color field !!')
                 elif not clarity: 
-                    st.warning('Please fill the Lunch Type field !!')
+                    st.warning('Please fill the Clarity field !!')
                 elif not depth: 
-                    st.warning('Please fill the Test Course field !!')
+                    st.warning('Please fill the Depth field !!')
                 elif not table: 
-                        st.warning('Please fill the roll number field !!')
+                        st.warning('Please fill Table field !!')
                 elif not x or not y or not z: 
-                        st.warning('Please fill the roll number field !!')
+                        st.warning('Please fill the Measure field !!')
                 else:
                     # Convert data into dataframe
                     data = CustomDataCarat(cut, color, clarity, depth, table, price, x, y, z)
