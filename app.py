@@ -123,7 +123,7 @@ def main():
                     result = predict_pipeline.predict_price(predict_df)
                     results = round(result[0], 2)
                     
-                    st.success(f'Based on your input, My prediction for your 💎 Price is around ${results:.2f}', icon="🔎")
+                    st.success(f'Based on your input, My prediction for your 💎 Price is around **${results:.2f}**', icon="🔎")
         
     
     # Carat    
@@ -181,7 +181,7 @@ def main():
                     to_gram = results / 5
                     
                     st.info('📝 1 carat = 0.2 gr')
-                    st.success(f'Based on your input, My prediction you will get 💎 for {results:.2f} carat or {to_gram:.2f} gram', icon="🔎")
+                    st.success(f'Based on your input, My prediction you will get 💎 for **{results:.2f} carat** or **{to_gram:.2f} gram**', icon="🔎")
         
 
 if __name__ == '__main__': 

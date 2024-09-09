@@ -40,7 +40,7 @@ Built with Streamlit and it encapsulates a comprehensive Python environment that
 ## 👑Streamlit Application
 You can Run it with two methods:
 1. Run on the (Web) Cloud:
-    🔗: [💎 Diamond Prediction](student-math-performance.streamlit.app)
+    🔗: [💎 Diamond Prediction](https://diamond-prediction.streamlit.app/)
 2. Run on the Local:
     ```
     streamlit run app.py
