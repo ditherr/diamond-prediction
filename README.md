@@ -9,6 +9,10 @@
 ## 🚀 About Diamond Prediction
 This 💎Diamond Prediction Web-App provide a little information about Diamonds and slice of the Analysis about the distribution of Diamond itself. Also provides two prediction, Price and Weight of Diamond based on users preference.
 
+<p align="center">
+  <img src="image/Product.png" alt="Diamond Prediction", width=620>
+</p>
+
 ### 📜 What does it do?
 
 This 💎Web-App allows you to predict Price and Weight of Diamonds based on your preference. What users need to do is read the tab `Information` first and see the analysis there to help users decide which quality, color, size that inline to the preference. Then, users can predict the Price or Weight of Diamonds based on what they have analyzed or identified. 
@@ -69,3 +73,13 @@ The iniate pipeline for the model that used here is `XGBRegressor`. You can chan
     streamlit==1.38.0
     plotly==5.24.0
 ```
+
+
+### Documentation
+1. [Kaggle - Diamond Dataset](https://www.kaggle.com/datasets/shivam2503/diamonds)
+2. Notebook: [karnikakapoor](https://www.kaggle.com/code/karnikakapoor/diamond-price-prediction/comments), [surajjha101](https://www.kaggle.com/code/bhuvanchennoju/s-s-experimets-fun-with-r2-99-21), + + +
+3. [Brilliance - Diamonds education](https://www.brilliance.com/education/diamonds)
+4. [Diamonds.pro](https://www.diamonds.pro/education/clarity/)
+5. [Plotly Documentations](https://plotly.com/python/)
+6. [Streamlit Documentations](https://docs.streamlit.io/)
+7. ...
